@@ -466,7 +466,7 @@ PSECT udata_bank0 ;common memory
 	goto	$+4		;100 es mayor y ya no vuelvo a restar, porque CARRY es 0
 	movwf	DATO		;CARRY es 1, por lo que el resultado si lo guardo en DATO
 	incf	centena		;aumento el valor de centena
-	goto	$-6		 ;vuelvo a restar porque DATO es más de 100
+	goto	$-6		 ;vuelvo a restar porque DATO es mÃ¡s de 100
 	
 	
 	movlw	10
@@ -551,7 +551,7 @@ PSECT udata_bank0 ;common memory
 	MOVWF	TMR0
 	bcf	T0IF
 	return
-    config_tmr0_cuadrada: ;INTERRUPCIÓN lo + lenta posible 0.00499s
+    config_tmr0_cuadrada: ;INTERRUPCIÃ“N lo + lenta posible 0.00499s
 	BANKSEL	OPTION_REG 
 	BCF	OPTION_REG, 5	;Usar oscilador interno
 	BCF	OPTION_REG, 4	
@@ -574,22 +574,5 @@ PSECT udata_bank0 ;common memory
 	incf	cambioPendiente
 	return
 	
-    ;onda_cuadrada:
-	;bcf	RBIF
-	;call config_tmr0_cuadrada
-	;call resetTMR0_cuadrada
-	;incf	tog
-	;btfss	tog, 0
-	;clrf	PORTA
-	;movlw	11111111
-	;movwf	PORTA
-	;goto onda_cuadrada
-	;return
-	;incf PORTA
-	
-    ;loop2:
-	;goto loop2
-    	
-    ;btfss toggle_cuadrada
     
     END	
